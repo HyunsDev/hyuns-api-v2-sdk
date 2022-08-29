@@ -1,12 +1,20 @@
 {
-  "name": "hyuns-api-v2-sdk",
+  "name": "hyuns-api-v2-client",
   "version": "0.1.0",
-  "main": "index.js",
+  "description": "Hyuns API v2 Client",
+  "homepage": "https://github.com/HyunsDev/hyuns-api-v2-sdk",
+  "module": "dist/index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bugs": {
+    "url": "https://github.com/HyunsDev/hyuns-api-v2-sdk/issues",
+    "email": "hyuns@hyuns.dev"
+  },
   "repository": "https://github.com/HyunsDev/hyuns-api-v2-sdk.git",
   "author": "혀느현스 <hyuns@hyuns.dev>",
   "license": "MIT",
   "scripts": {
-    "publish:npm": "rmdir dist /s /q && mkdir dist && babel src/lib -d dist --copy-files --extensions \".ts,.tsx\" --ignore \"src/**/*.stories.tsx\" --no-copy-ignored && tsc --p tsconfig.module.json",
+    "publish:npm": "rmdir dist /s /q && mkdir dist && babel src -d dist --copy-files --extensions \".ts\" --no-copy-ignored && tsc --p tsconfig.module.json",
     "lint": "eslint \"src/**/*.{ts,js}\"",
     "lint:fix": "eslint --fix \"src/**/*.{ts,js}\""
   },
@@ -23,10 +31,12 @@
     "@typescript-eslint/parser": "^5.35.1",
     "babel-plugin-named-exports-order": "^0.0.2",
     "eslint": "^8.23.0",
+    "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin": "^1.0.1",
     "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "jest": "^29.0.1",
     "prettier": "^2.7.1",
     "ts-jest": "^28.0.8",
