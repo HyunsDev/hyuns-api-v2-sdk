@@ -9,7 +9,6 @@
     },
     "extends": [
         "prettier",
-        "airbnb",
         "plugin:@typescript-eslint/recommended",
         "plugin:prettier/recommended"
     ],
