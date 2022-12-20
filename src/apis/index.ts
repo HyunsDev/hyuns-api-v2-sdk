@@ -28,6 +28,26 @@ import {
     postMessageResponse,
 } from './endpoints/message';
 import {
+    getRequest,
+    getRequestParameters,
+    getRequestResponse,
+    deleteRequest,
+    deleteRequestParameters,
+    deleteRequestResponse,
+    getRequests,
+    getRequestsParameters,
+    getRequestsResponse,
+    patchRequest,
+    patchRequestParameters,
+    patchRequestResponse,
+    postRequest,
+    postRequestParameters,
+    postRequestResponse,
+    postRequests,
+    postRequestsParameters,
+    postRequestsResponse,
+} from './endpoints/request';
+import {
     deleteResource,
     deleteResourceParameters,
     deleteResourceResponse,
@@ -338,6 +358,63 @@ export default class Client {
                 method: deleteVar.method,
                 query: pick(args, deleteVar.queryParams),
                 body: pick(args, deleteVar.bodyParams),
+                auth: args?.auth,
+            });
+        },
+    };
+
+    public readonly httpRequest = {
+        get: (args: WithAuth<getRequestParameters>): Promise<getRequestResponse> => {
+            return this.request<getRequestResponse>({
+                path: getRequest.path(args),
+                method: getRequest.method,
+                query: pick(args, getRequest.queryParams),
+                body: pick(args, getRequest.bodyParams),
+                auth: args?.auth,
+            });
+        },
+        create: (args: WithAuth<postRequestsParameters>): Promise<postRequestsResponse> => {
+            return this.request<postRequestsResponse>({
+                path: postRequests.path(args),
+                method: postRequests.method,
+                query: pick(args, postRequests.queryParams),
+                body: pick(args, postRequests.bodyParams),
+                auth: args?.auth,
+            });
+        },
+        list: (args: WithAuth<getRequestsParameters>): Promise<getRequestsResponse> => {
+            return this.request<getRequestsResponse>({
+                path: getRequests.path(args),
+                method: getRequests.method,
+                query: pick(args, getRequests.queryParams),
+                body: pick(args, getRequests.bodyParams),
+                auth: args?.auth,
+            });
+        },
+        execute: (args: WithAuth<postRequestParameters>): Promise<postRequestResponse> => {
+            return this.request<postRequestResponse>({
+                path: postRequest.path(args),
+                method: postRequest.method,
+                query: pick(args, postRequest.queryParams),
+                body: pick(args, postRequest.bodyParams),
+                auth: args?.auth,
+            });
+        },
+        patch: (args: WithAuth<patchRequestParameters>): Promise<patchRequestResponse> => {
+            return this.request<patchRequestResponse>({
+                path: patchRequest.path(args),
+                method: patchRequest.method,
+                query: pick(args, patchRequest.queryParams),
+                body: pick(args, patchRequest.bodyParams),
+                auth: args?.auth,
+            });
+        },
+        delete: (args: WithAuth<deleteRequestParameters>): Promise<deleteRequestResponse> => {
+            return this.request<deleteRequestResponse>({
+                path: deleteRequest.path(args),
+                method: deleteRequest.method,
+                query: pick(args, deleteRequest.queryParams),
+                body: pick(args, deleteRequest.bodyParams),
                 auth: args?.auth,
             });
         },
