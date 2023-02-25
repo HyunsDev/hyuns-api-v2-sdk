@@ -1,18 +1,8 @@
-import { Endpoint } from '../types/endpoint';
-
-type Request = {
-    _id: string;
-    name: string;
-    url: string;
-    method: 'GET' | 'POST' | 'DELETE' | 'PUT' | 'PATCH';
-    body?: string;
-    headers?: string;
-    image?: string;
-    memo?: string;
-};
+import { Endpoint } from 'endpoint-client';
+import { RequestObject } from '../object';
 
 // POST /request
-export type postRequestsParameters = {
+export type postRequestsParameter = {
     name: string;
     url: string;
     method: 'GET' | 'POST' | 'DELETE' | 'PUT' | 'PATCH';
@@ -21,9 +11,9 @@ export type postRequestsParameters = {
     image?: string;
     memo?: string;
 };
-export const postRequests: Endpoint<postRequestsParameters> = {
+export const postRequests: Endpoint<postRequestsParameter, postRequestResponse> = {
     path: () => '/request',
-    method: 'post',
+    method: 'POST',
     bodyParams: ['body', 'headers', 'image', 'method', 'memo', 'name', 'url'],
     pathParams: [],
     queryParams: [],
@@ -33,38 +23,38 @@ export type postRequestsResponse = {
 };
 
 // GET /request/:id
-export type getRequestParameters = {
+export type getRequestParameter = {
     id: string;
 };
-export const getRequest: Endpoint<getRequestParameters> = {
+export const getRequest: Endpoint<getRequestParameter, getRequestResponse> = {
     path: (e) => `/request/${e.id}`,
-    method: 'get',
+    method: 'GET',
     bodyParams: [],
     pathParams: ['id'],
     queryParams: [],
 };
-export type getRequestResponse = Request;
+export type getRequestResponse = RequestObject;
 
 // GET /request
-export type getRequestsParameters = Record<string, never>;
-export const getRequests: Endpoint<getRequestsParameters> = {
+export type getRequestsParameter = Record<string, never>;
+export const getRequests: Endpoint<getRequestsParameter, getRequestsResponse> = {
     path: () => `/request`,
-    method: 'get',
+    method: 'GET',
     bodyParams: [],
     pathParams: [],
     queryParams: [],
 };
 export type getRequestsResponse = {
-    requests: Request[];
+    requests: RequestObject[];
 };
 
 // POST /request/:id
-export type postRequestParameters = {
+export type postRequestParameter = {
     id: string;
 };
-export const postRequest: Endpoint<postRequestParameters> = {
+export const postRequest: Endpoint<postRequestParameter, postRequestResponse> = {
     path: (e) => `/request/${e.id}`,
-    method: 'post',
+    method: 'POST',
     bodyParams: [],
     pathParams: ['id'],
     queryParams: [],
@@ -80,19 +70,19 @@ export type postRequestResponse =
       };
 
 // PATCH /request/:id
-export type patchRequestParameters = {
+export type patchRequestParameter = {
     id: string;
     name?: string;
     url?: string;
-    method?: Request['method'];
+    method?: RequestObject['method'];
     body?: string;
     headers?: string;
     memo?: string;
     image?: string;
 };
-export const patchRequest: Endpoint<patchRequestParameters> = {
+export const patchRequest: Endpoint<patchRequestParameter, patchRequestResponse> = {
     path: (e) => `/request/${e.id}`,
-    method: 'patch',
+    method: 'PATCH',
     bodyParams: ['body', 'headers', 'memo', 'image', 'method', 'name', 'url'],
     pathParams: ['id'],
     queryParams: [],
@@ -100,14 +90,14 @@ export const patchRequest: Endpoint<patchRequestParameters> = {
 export type patchRequestResponse = Record<string, never>;
 
 // DELETE /request/:id
-export type deleteRequestParameters = {
+export type deleteRequestParameter = {
     id: string;
 };
-export const deleteRequest: Endpoint<deleteRequestParameters> = {
+export const deleteRequest: Endpoint<deleteRequestParameter, deleteRequestResponse> = {
     path: (e) => `/request/${e.id}`,
-    method: 'delete',
+    method: 'DELETE',
     bodyParams: [],
     pathParams: ['id'],
     queryParams: [],
 };
-export type deleteRequestResponse = Request;
+export type deleteRequestResponse = RequestObject;
