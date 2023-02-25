@@ -1,6 +1,6 @@
 {
   "name": "hyuns-api-v2-client",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Hyuns API v2 Client",
   "homepage": "https://github.com/HyunsDev/hyuns-api-v2-sdk",
   "module": "dist/index.js",
@@ -14,7 +14,8 @@
   "author": "혀느현스 <hyuns@hyuns.dev>",
   "license": "MIT",
   "scripts": {
-    "publish:npm": "rmdir dist /s /q && mkdir dist && babel src -d dist --copy-files --extensions \".ts\" --no-copy-ignored && tsc --p tsconfig.module.json",
+    "build": "rmdir dist /s /q && mkdir dist && babel src -d dist --copy-files --extensions \".ts\" --no-copy-ignored && tsc --p tsconfig.module.json",
+    "build:mac": "rm -r dist && mkdir dist && babel src -d dist --copy-files --extensions \".ts\" --no-copy-ignored && tsc --p tsconfig.module.json",
     "lint": "eslint \"src/**/*.{ts,js}\"",
     "lint:fix": "eslint --fix \"src/**/*.{ts,js}\""
   },
