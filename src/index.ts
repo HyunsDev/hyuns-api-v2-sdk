@@ -1,3 +1,3 @@
 export * from './client';
 export * from './apis';
-export type { APIResponseError } from 'endpoint-client';
+export { APIResponseError } from 'endpoint-client';
