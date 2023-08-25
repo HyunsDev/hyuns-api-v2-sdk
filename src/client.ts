@@ -45,4 +45,8 @@ export class HyunsClient extends EndpointClient {
         patch: this.endpointBuilder(Endpoint.Request.patchRequest),
         delete: this.endpointBuilder(Endpoint.Request.deleteRequest),
     };
+
+    readonly auth = {
+        login: this.endpointBuilder(Endpoint.Auth.postAuthLogin),
+    };
 }
