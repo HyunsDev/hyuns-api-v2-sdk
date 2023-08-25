@@ -1,21 +1,8 @@
-import { Endpoint } from '../types/endpoint';
-
-type message = {
-    _id: string;
-    title: string;
-    subTitle?: string;
-    content?: string;
-    buttons?: any;
-    avatarName?: string;
-    avatarIcon?: string;
-    authorId: string;
-    authorKind: string;
-    state: string;
-    type: string;
-};
+import { Endpoint } from 'endpoint-client';
+import { MessageObject } from '../object';
 
 // POST /message
-export type postMessageParameters = {
+export type postMessageParameter = {
     title: string;
     subTitle?: string;
     content?: string;
@@ -25,9 +12,9 @@ export type postMessageParameters = {
     type?: string;
     state?: string;
 };
-export const postMessage: Endpoint<postMessageParameters> = {
+export const postMessage: Endpoint<postMessageParameter, postMessageResponse> = {
     path: () => '/message',
-    method: 'post',
+    method: 'POST',
     bodyParams: ['title', 'subTitle', 'content', 'buttons', 'avatarIcon', 'avatarName', 'type', 'state'],
     pathParams: [],
     queryParams: [],
@@ -37,31 +24,31 @@ export type postMessageResponse = {
 };
 
 // GET /message/:id
-export type getMessageParameters = {
+export type getMessageParameter = {
     id: string;
 };
-export const getMessage: Endpoint<getMessageParameters> = {
-    method: 'post',
+export const getMessage: Endpoint<getMessageParameter, getMessageResponse> = {
+    method: 'POST',
     queryParams: ['id'],
     bodyParams: [],
     pathParams: [],
     path: (e) => `/message/${e.id}`,
 };
-export type getMessageResponse = message;
+export type getMessageResponse = MessageObject;
 
 // GET /message
-export type getMessagesParameters = Record<string, never>;
-export const getMessages: Endpoint<getMessagesParameters> = {
-    method: 'get',
+export type getMessagesParameter = Record<string, never>;
+export const getMessages: Endpoint<getMessagesParameter, getMessagesResponse> = {
+    method: 'GET',
     path: () => '/message',
     bodyParams: [],
     queryParams: [],
     pathParams: [],
 };
-export type getMessagesResponse = message[];
+export type getMessagesResponse = MessageObject[];
 
 // PATCH /message/:id
-export type patchMessageParameters = {
+export type patchMessageParameter = {
     id: string;
     content?: string;
     embed?: string;
@@ -69,9 +56,9 @@ export type patchMessageParameters = {
     type?: string;
     state?: string;
 };
-export const patchMessage: Endpoint<patchMessageParameters> = {
+export const patchMessage: Endpoint<patchMessageParameter, patchMessageResponse> = {
     path: (e) => `/message/${e.id}`,
-    method: 'patch',
+    method: 'PATCH',
     bodyParams: ['content', 'embed', 'buttons', 'type', 'state'],
     pathParams: ['id'],
     queryParams: [],
@@ -79,12 +66,12 @@ export const patchMessage: Endpoint<patchMessageParameters> = {
 export type patchMessageResponse = Record<string, never>;
 
 // DELETE /message/:id
-export type deleteMessageParameters = {
+export type deleteMessageParameter = {
     id: string;
 };
-export const deleteMessage: Endpoint<deleteMessageParameters> = {
+export const deleteMessage: Endpoint<deleteMessageParameter, deleteMessageResponse> = {
     path: (e) => `/message/${e.id}`,
-    method: 'delete',
+    method: 'DELETE',
     pathParams: ['id'],
     queryParams: [],
     bodyParams: [],
