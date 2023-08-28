@@ -45,7 +45,9 @@ export const getMessages: Endpoint<getMessagesParameter, getMessagesResponse> = 
     queryParams: [],
     pathParams: [],
 };
-export type getMessagesResponse = MessageObject[];
+export type getMessagesResponse = {
+    messages: MessageObject[];
+};
 
 // PATCH /message/:id
 export type patchMessageParameter = {
