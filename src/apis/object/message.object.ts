@@ -10,4 +10,5 @@ export type MessageObject = {
     authorKind: string;
     state: string;
     type: string;
+    createdAt: string;
 };
