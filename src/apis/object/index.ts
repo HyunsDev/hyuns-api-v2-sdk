@@ -4,3 +4,4 @@ export * from './request.object';
 export * from './resource.object';
 export * from './server.endpoint';
 export * from './var.object';
+export * from './env.object';

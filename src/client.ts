@@ -37,6 +37,13 @@ export class HyunsClient extends EndpointClient {
         delete: this.endpointBuilder(Endpoint.Var.deleteVar),
     };
 
+    readonly env = {
+        get: this.endpointBuilder(Endpoint.Env.getEnv),
+        post: this.endpointBuilder(Endpoint.Env.postEnv),
+        list: this.endpointBuilder(Endpoint.Env.getEnvs),
+        delete: this.endpointBuilder(Endpoint.Env.deleteEnv),
+    };
+
     readonly httpRequest = {
         get: this.endpointBuilder(Endpoint.Request.getRequest),
         create: this.endpointBuilder(Endpoint.Request.postRequests),
