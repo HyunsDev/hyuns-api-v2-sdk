@@ -12,7 +12,7 @@ export const getVars: Endpoint<getVarsParameter, getVarsResponse> = {
 };
 export type getVarsResponse = VarObject[];
 
-// GET /var
+// GET /var/:key
 export type getVarParameter = {
     key: string;
 };

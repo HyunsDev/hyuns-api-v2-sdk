@@ -33,7 +33,7 @@ export class HyunsClient extends EndpointClient {
     readonly var = {
         get: this.endpointBuilder(Endpoint.Var.getVar),
         post: this.endpointBuilder(Endpoint.Var.postVar),
-        list: this.endpointBuilder(Endpoint.Var.getVar),
+        list: this.endpointBuilder(Endpoint.Var.getVars),
         delete: this.endpointBuilder(Endpoint.Var.deleteVar),
     };
 
