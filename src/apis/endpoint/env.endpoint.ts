@@ -29,13 +29,12 @@ export type getEnvResponse = EnvObject;
 export type postEnvParameter = {
     key: string;
     value: string;
-    isPublic: boolean;
     img: string;
 };
 export const postEnv: Endpoint<postEnvParameter, postEnvResponse> = {
     path: () => `/env`,
     method: 'POST',
-    bodyParams: ['img', 'isPublic', 'key', 'value'],
+    bodyParams: ['img', 'key', 'value'],
     pathParams: [],
     queryParams: [],
 };
